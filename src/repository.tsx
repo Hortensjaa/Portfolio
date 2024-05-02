@@ -131,5 +131,11 @@ export const personalData = {
     socials: [
         {type: "Github", link: "https://github.com/Hortensjaa", icon: <GitHub/>},
         {type: "LinkedIn", link: "https://www.linkedin.com/in/julia-kulczycka-177968277/", icon: <LinkedIn/>},
-    ]
+    ],
+    picture: "/cat.jpg",
+    aboutMe: `I am a computer science student and a bachelor's degree holder in mathematics at the
+        University of Wrocław. My current goal is to improve my skills of mobile development,
+        although I am also interested in more theoretical aspects like pure functional programming. In
+        my work, I am primarily looking for opportunities for self-development, I am highly engaged,
+        and I am eager to learn new things.`
 }

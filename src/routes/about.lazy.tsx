@@ -1,8 +1,9 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import { Divider } from '@mui/material'
+import { Divider, Typography } from '@mui/material'
 import EducationTimeline from '../components/educationTimeline'
 import ExperienceSection from '../components/experienceSection'
 import TechStackCard from '../components/techstackCards'
+import AboutMeSection from '../components/aboutMeSection'
 
 export const Route = createLazyFileRoute('/about')({
   component: About,
@@ -11,13 +12,14 @@ export const Route = createLazyFileRoute('/about')({
 function About() {
     return (
         <div>
-            <h1>Technological stack</h1>
+            <AboutMeSection />
+            <Typography variant="h2" sx={{mt: 10}}>Technological stack</Typography>
             <TechStackCard />
             <Divider sx = {{mb: 4}}/>
-            <h1>Education</h1>
+            <Typography variant="h2" sx={{mt: 10}}>Education</Typography>
             <EducationTimeline />
             <Divider sx = {{mb: 4}}/>
-            <h1>Work experience</h1>
+            <Typography variant="h2" sx={{mt: 10}}>Work experience</Typography>
             <ExperienceSection />
         </div>
     )
