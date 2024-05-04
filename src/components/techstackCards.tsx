@@ -2,10 +2,13 @@ import * as React from 'react';
 import { Link } from '@tanstack/react-router'
 import {Box, Button, Card, CardActions, CardContent, Grid, ListItem, ListItemIcon, ListItemText, Typography} from '@mui/material';
 import { StarBorder } from '@mui/icons-material/'
-import { techstack } from '../repository';
+import { hashtag, techstack } from '../repository';
+import { SharedStateContext } from '../contextProvider'
+import { useContext } from 'react';
 
 interface TechstackCardProps {
-    hashtags: string[];
+    id: hashtag;
+    hashtags: hashtag[];
     title: string;
     projects: string[];
     icons: React.ReactNode[];
@@ -18,6 +21,7 @@ export default function TechStackCards() {
             techstack.map((e, _) => {
                 return (
                     <TechStackCard 
+                        id = {e.id}
                         hashtags = {e.hashtags}
                         title = {e.title}
                         projects = {e.projects}
@@ -31,8 +35,9 @@ export default function TechStackCards() {
 }
 
 const TechStackCard: React.FC<TechstackCardProps> = (
-    { hashtags, title, projects, icons }
+    { id, hashtags, title, projects, icons }
 ) => {
+    const { setFilters } = useContext(SharedStateContext);
     return (
         <Box sx={{width: 300, m:2}}>
             <Card variant="outlined"sx={{height: 310 }}>
@@ -42,16 +47,20 @@ const TechStackCard: React.FC<TechstackCardProps> = (
                     <Typography color="text.secondary">
                         Projects:
                     </Typography>
-                    {projects.map((text, id) => {
+                    {projects.map((text, index) => {
                     return (
                         <ListItem disablePadding>
-                            <ListItemIcon> {icons[id] ? icons[id] : <StarBorder />} </ListItemIcon>
+                            <ListItemIcon> {icons[index] ? icons[index] : <StarBorder />} </ListItemIcon>
                             <ListItemText>{text}</ListItemText>
                         </ListItem>)
                     })}
                 </CardContent>
                 <CardActions style={{ justifyContent: 'center' }}>
-                    <Button size="small"><Link to="/projects">Show projects</Link></Button>
+                    <Button size="small" onClick={() => setFilters([id])}>
+                        <Link to="/projects">
+                            Show projects
+                        </Link>
+                    </Button>
                 </CardActions>
             </Card>
         </Box>

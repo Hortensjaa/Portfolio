@@ -32,7 +32,9 @@ export default function EducationTimeline() {
   );
 }
   
-const TimelineComponent: React.FC<TimelineComponentProps> = ({ start_year, end_year, title, description, is_active, icon: Icon }) => {
+const TimelineComponent: React.FC<TimelineComponentProps> = (
+    { start_year, end_year, title, description, is_active, icon: Icon }
+) => {
     return (
         <TimelineItem>
         <TimelineOppositeContent

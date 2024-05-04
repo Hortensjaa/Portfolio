@@ -1,9 +1,11 @@
 import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from '@mui/material/';
 import { GitHub } from '@mui/icons-material';
-import { projects } from '../repository';
+import { projects, hashtag } from '../repository';
+import { useContext } from 'react';
+import { SharedStateContext } from '../contextProvider';
 
 interface ProjectComponentProps {
-    hashtags: string[],
+    hashtags: hashtag[],
     title: string,
     description: string,
     photo: string,
@@ -12,10 +14,16 @@ interface ProjectComponentProps {
 
 
 export default function ProjectsCards() {
+    const { filtersState } = useContext(SharedStateContext);
     return (
         <Grid container spacing={2}>
             {
-                projects.map((e, _) => {
+                projects
+                .filter((e, _) => {
+                    if (filtersState.length == 0) return true
+                    else return e.hashtags.includes(filtersState[0])
+                })
+                .map((e, _) => {
                     return (
                         <ProjectCard 
                             hashtags = {e.hashtags}

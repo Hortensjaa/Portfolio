@@ -4,6 +4,6 @@ import ProjectsCards from '../components/projectCards'
 export const Route = createLazyFileRoute('/projects')({
   component: () => 
   <div>
-    <ProjectsCards />
+    <ProjectsCards/>
   </div>
 })

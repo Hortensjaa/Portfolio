@@ -15,7 +15,7 @@ interface ExperienceComponentProps {
 
 export default function ExperienceSection() {
     return (
-      <div>
+      <div style={{marginTop: "20px"}}>
             {experience.map((e, _) => {
             return (
               <ExperienceComponent 
