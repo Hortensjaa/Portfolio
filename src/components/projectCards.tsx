@@ -44,7 +44,7 @@ const ProjectCard: React.FC<ProjectComponentProps> = (
     { hashtags, title, description, photo, repo }
 ) => {
     return (
-        <Card sx={{ width: 600, height: 450, m: 5, position: 'relative' }}>
+        <Card sx={{ width: "40%", height: 450, m: 5, position: 'relative' }}>
         <CardMedia
             sx={{ height: 300 }}
             image={photo}

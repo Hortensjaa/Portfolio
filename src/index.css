@@ -23,8 +23,8 @@ a:hover {
 }
 
 body {
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 10%;
+  margin-right: 10%;
   margin-top: 50px;
   display: flex;
   place-items: center;
