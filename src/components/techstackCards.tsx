@@ -18,9 +18,10 @@ export default function TechStackCards() {
   return (
     <Grid container>
         {
-            techstack.map((e, _) => {
+            techstack.map((e, index) => {
                 return (
                     <TechStackCard 
+                        key = {index}
                         id = {e.id}
                         hashtags = {e.hashtags}
                         title = {e.title}
@@ -49,7 +50,7 @@ const TechStackCard: React.FC<TechstackCardProps> = (
                     </Typography>
                     {projects.map((text, index) => {
                     return (
-                        <ListItem disablePadding>
+                        <ListItem disablePadding key={index}>
                             <ListItemIcon> {icons[index] ? icons[index] : <StarBorder />} </ListItemIcon>
                             <ListItemText>{text}</ListItemText>
                         </ListItem>)

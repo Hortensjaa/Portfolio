@@ -1,4 +1,4 @@
-import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from '@mui/material/';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from '@mui/material/';
 import { GitHub } from '@mui/icons-material';
 import { projects, hashtag } from '../repository';
 import { useContext } from 'react';
@@ -23,9 +23,10 @@ export default function ProjectsCards() {
                     if (filtersState.length == 0) return true
                     else return e.hashtags.includes(filtersState[0])
                 })
-                .map((e, _) => {
+                .map((e, index) => {
                     return (
                         <ProjectCard 
+                            key = {index}
                             hashtags = {e.hashtags}
                             title = {e.title}
                             description = {e.description}
@@ -44,7 +45,7 @@ const ProjectCard: React.FC<ProjectComponentProps> = (
     { hashtags, title, description, photo, repo }
 ) => {
     return (
-        <Card sx={{ width: "40%", height: 450, m: 5, position: 'relative' }}>
+        <Card sx={{ minWidth: "300px", maxWidth: "450px", m: 5, position: 'relative' }}>
         <CardMedia
             sx={{ height: 300 }}
             image={photo}
@@ -52,7 +53,7 @@ const ProjectCard: React.FC<ProjectComponentProps> = (
         />
         <CardContent>
             <Typography variant="body2" color="secondary">
-            <Typography color="secondary"> {hashtags.map((e, index) => <span key={index}>{"#" + e + " "}</span>)} </Typography>
+                {hashtags.map((e, index) => <span key={index}>{"#" + e + " "}</span>)} 
             </Typography>
             <Typography gutterBottom variant="h5" component="div">{title}</Typography>
             <Typography variant="body2" color="text.secondary">{description}</Typography>

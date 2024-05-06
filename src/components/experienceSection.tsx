@@ -16,9 +16,10 @@ interface ExperienceComponentProps {
 export default function ExperienceSection() {
     return (
       <div style={{marginTop: "20px"}}>
-            {experience.map((e, _) => {
+            {experience.map((e, index) => {
             return (
               <ExperienceComponent 
+                key = {index}
                 hashtags = {e.hashtags}
                 title = {e.title}
                 detailsString = {e.detailsString}
@@ -37,9 +38,11 @@ const ExperienceComponent: React.FC<ExperienceComponentProps> = (
   ) => {
     return (
       <div>
-            <Typography color="secondary"> {hashtags.map((e, _) => {return "#"+e+" "})} </Typography> 
+            <Typography color="secondary"> 
+              {hashtags.map((e, index) => <span key={index}>{"#" + e + " "}</span>)} 
+            </Typography> 
             <Typography variant="h4" component="div" sx = {{my: 1}}> {title} </Typography>
-            <Typography color="text.secondary"> {detailsString} </Typography>
+            <Typography variant = "body2" color="text.secondary"> {detailsString} </Typography>
             <Typography sx = {{my: 1.5}}> {description} </Typography>
             <Accordion>
               <AccordionSummary
@@ -52,8 +55,8 @@ const ExperienceComponent: React.FC<ExperienceComponentProps> = (
               </AccordionSummary>
               <AccordionDetails>
                 <List>
-                  {responsibilities.map((text, _) => {
-                    return (<CustomListItem title={text} />)
+                  {responsibilities.map((text, index) => {
+                    return (<CustomListItem key={index} title={text} />)
                   })}
                 </List>
               </AccordionDetails>

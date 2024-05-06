@@ -18,7 +18,7 @@ function Index() {
           <div>
             {personalData.socials.map((s, _) => {
                 return (
-                    <Button variant="outlined" href={s.link} endIcon={s.icon} size='large' sx={{mr: 1}}>
+                    <Button variant="outlined" href={s.link} endIcon={s.icon} size='large' sx={{mr: 1}} key={s.type}>
                          {s.type}
                     </Button>
                 )

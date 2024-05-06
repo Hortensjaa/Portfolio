@@ -15,10 +15,11 @@ interface TimelineComponentProps {
 
 export default function EducationTimeline() {
   return (
-    <Timeline position="alternate" sx={{ mx: 5, width: '900px' }}>
-        {education.map((e, _) => {
+    <Timeline position="alternate" sx={{ mx: 5 }}>
+        {education.map((e, index) => {
             return (
                 <TimelineComponent 
+                    key={index}
                     start_year={e.start_year}
                     end_year={e.end_year}
                     title={e.title}
@@ -52,7 +53,7 @@ const TimelineComponent: React.FC<TimelineComponentProps> = (
             </TimelineDot>
             <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent sx={{ py: '12px', px: 2 }}>
+        <TimelineContent>
             <Typography variant="h6" component="span"> {title} </Typography>
             <Typography> {description} </Typography>
         </TimelineContent>
